@@ -1,19 +1,19 @@
 <?php
 
-include "index.php";
+function removeNote($id){
+	
 
-function removeNote($note_id){
-	global $db;
-	$db->notes->remove(
-		array('_id' => new MongoId($note_id))
-		);
-
+	$mongo = new Mongo();
+	$notes = $mongo->mydb->notes;
+	$notes->remove(array(
+		"_id" => new MongoId($id)
+		));
 }
 
-if($_POST['action'] == 'call_this') {
 
-	removeNote($_POST['note_id']);
-}
+removeNote($_POST["id"]);
+
 
 
 ?>
+

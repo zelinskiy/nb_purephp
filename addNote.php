@@ -1,25 +1,23 @@
 <?php
+session_start();
 
-include "index.php";
+function insertNote($title, $text){
+	
+	$user_id = $_SESSION["userid"];
 
-function addNote($user_id, $title, $text){
-	global $db;
-	$db->notes->insert(array(
+	$mongo = new Mongo();
+	$notes = $mongo->mydb->notes;
+	$notes->insert(array(
 		"user_id" => $user_id,
 		"title" => $title,
-		"text" => $text,
-	));
-
+		"text" => $text
+		));
 }
 
-if($_POST['action'] == 'call_this') {
 
-	addNote(
-		$_POST['user_id'],
-		$_POST['title'],
-		$_POST['text']
-		);
-}
+insertNote($_POST["title"], $_POST["text"]);
+
 
 
 ?>
+
