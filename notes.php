@@ -51,6 +51,7 @@ function addNote(title, text){
 		success:function() {
 			//alert("note added");
 			//location.reload();
+			clearAddForm();
 			getUserNotes();
 		},
 		error:function(){
