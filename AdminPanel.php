@@ -1,6 +1,6 @@
 <html>
 <head>
-	
+	<meta charset="utf-8" /> 
 </head>
 
 
@@ -11,6 +11,7 @@
 
 
 echo "Admin panel";
+
 echo "<hr>";
 
 $mongo = new Mongo();
@@ -52,7 +53,7 @@ foreach($users as $user){
 ?>
 
 
-
+<p><img src="pics/meme2.jpg"  height="350"></p>
 </body>
 
 
