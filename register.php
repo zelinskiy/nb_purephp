@@ -33,7 +33,8 @@ function register(login, pass){
 <form action="">
    <p>Login:<input type="text" id="login"></p>
    <p>Password:<input type="text" id="pass"></p>
-   <p><input type="button" value="Login" onclick="register(document.getElementById('login').value, document.getElementById('pass').value)"></p>
+   <p><input type="button" value="Register me!" onclick="register(document.getElementById('login').value, document.getElementById('pass').value)"></p>
+   <p><input type="button" value="Return to login" onclick="window.location.replace('login.php');"></p>
 </form>
 <hr>
 

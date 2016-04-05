@@ -19,6 +19,10 @@
 
 //======POST REQUESTS========
 
+var NotesArray = []
+
+
+
 function addNote(title, text){
 	$.ajax({
 		type: "POST",
@@ -28,8 +32,9 @@ function addNote(title, text){
 			text:text
 		},
 		success:function() {
-			alert("note added");
-			location.reload();
+			//alert("note added");
+			//location.reload();
+			getUserNotes();
 		},
 		error:function(){
 			alert("failed to add note");
@@ -47,8 +52,9 @@ function removeNote(id){
 			id:id
 		},
 		success:function() {
-			alert("note removed");
-			location.reload();
+			//alert("note removed");
+			//location.reload();
+			getUserNotes();
 		},
 		error:function(){
 			alert("failed to remove note");
@@ -68,8 +74,9 @@ function updateNote(id, title, text){
 			text:text			
 		},
 		success:function() {
-			alert("updated note");
-			location.reload();
+			//alert("updated note");
+			//location.reload();
+			getUserNotes();
 		},
 		error:function(){
 			alert("failed to update note");
@@ -107,7 +114,8 @@ function getUserNotes(){
 		data:{		
 		},
 		success:function(h) {
-			showNotes(JSON.parse(h));
+			NotesArray = JSON.parse(h);
+			showNotes();
 		},
 		error:function(){
 			alert("failed to get your notes");
@@ -150,9 +158,14 @@ function showUserName(name){
 
 
 //Building DOM from notes array
-function showNotes(A){
+function showNotes(){
+
+	var A = NotesArray;
+
 	var root = document.getElementById("NotesCollection");
-	for(i=0; i<A.length; i++){		
+	root.innerHTML = "";
+
+	for(i=A.length-1; i>=0; i--){		
 
 		var mynote = A[i];
 
@@ -222,10 +235,37 @@ function hideEditForm(){
 }
 
 
+function bindEventsOnEnter(){
+	$("#text").keypress(function(event){
+		if(event.keyCode == 13){
+			$("#AddButton").click();
+			}
+		});
+	$("#title").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#AddButton").click();
+			}
+		});
+
+
+	$("#editTextBox").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#editButton").click();
+			}
+		});
+	$("#editTextBox").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#editButton").click();
+			}
+		});
+}
+
 
 function onStart(){
 	getUserNotes();
 	getUserName();
+	bindEventsOnEnter();
+	
 }
 
 onStart()
@@ -263,7 +303,7 @@ if(!isset($_SESSION["userid"])){
 <form action="">
 	<p><input type="text" id="title"></p>
 	<p><textarea id="text" style="width:250px;height:150px;"></textarea></p>
-	<p><input type="button" value="Add" onclick="addNote(document.getElementById('title').value, document.getElementById('text').value)"></p>
+	<p><input type="button" id="AddButton" value="Add" onclick="addNote(document.getElementById('title').value, document.getElementById('text').value)"></p>
 </form>
 <hr>
 
@@ -275,7 +315,7 @@ if(!isset($_SESSION["userid"])){
 	<input type="hidden" id="editId" value = "">
    <p>title: <input type="text" id="editTitleBox"></p>
    <p><textarea id="editTextBox" style="width:250px;height:150px;"></textarea></p>
-   <p><input type="button" value="Edit" onclick="updateNote(document.getElementById('editId').value,document.getElementById('editTitleBox').value, document.getElementById('editTextBox').value)"></p>
+   <p><input type="button" id="editButton" value="Edit" onclick="updateNote(document.getElementById('editId').value,document.getElementById('editTitleBox').value, document.getElementById('editTextBox').value)"></p>
 </form>
 <input type="button" value="Close Edit" onclick="hideEditForm()"></p>
 <hr>
