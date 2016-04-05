@@ -12,13 +12,6 @@
 
 <script>
 
-
-
-
-
-
-//======POST REQUESTS========
-
 function addNote(title, text){
 	$.ajax({
 		type: "POST",
@@ -100,113 +93,6 @@ function deleteAcc(){
 }
 
 
-function getUserNotes(){
-	$.ajax({
-		type: "POST",
-		url: 'getUserNotes.php',
-		data:{		
-		},
-		success:function(h) {
-			showNotes(JSON.parse(h));
-		},
-		error:function(){
-			alert("failed to get your notes");
-		}
-	});
-}
-
-
-function getUserName(){
-	$.ajax({
-		type: "POST",
-		url: 'getUserName.php',
-		data:{		
-		},
-		success:function(h) {
-			console.log(h);
-			showUserName(h);
-		},
-		error:function(){
-			alert("failed to get your name");
-		}
-	});
-}
-
-//======END OF POST REQUESTS========
-
-
-
-
-
-
-
-
-//Binds username to DOM element
-function showUserName(name){
-	var nameHolder = document.getElementById("UserNamePlace");
-	nameHolder.innerHTML = name;
-}
-
-
-
-//Building DOM from notes array
-function showNotes(A){
-	var root = document.getElementById("NotesCollection");
-	for(i=0; i<A.length; i++){		
-
-		var mynote = A[i];
-
-		var noteDiv = document.createElement('div');
-		noteDiv.id = mynote["id"];
-		
-		//=========================		
-		var noteTitleP = document.createElement('p');
-		var noteTextP = document.createElement('p');
-
-		noteTitleP.innerHTML = mynote["title"];
-		noteTextP.innerHTML = mynote["text"];
-
-		noteDiv.appendChild(noteTitleP);
-		noteDiv.appendChild(noteTextP);
-		//=====================
-
-		var noteDeleteButton = document.createElement('input');
-		var noteEditButton = document.createElement('input');
-
-		noteDeleteButton.type = "button";
-		noteEditButton.type = "button";
-
-		noteDeleteButton.value = "Delete";
-		noteEditButton.value = "Edit";
-
-		noteDeleteButton.onclick = function(id){
-			return function(){
-				removeNote(id);
-			}
-		}(mynote["id"]);
-
-
-		noteEditButton.onclick = function(id, title, text){
-			return function(){
-				editNote(id, title, text);
-			}
-		}(mynote["id"],mynote["title"],mynote["text"]);
-
-		noteDiv.appendChild(noteDeleteButton);
-		noteDiv.appendChild(noteEditButton);
-
-		//=================
-		noteDiv.appendChild(document.createElement('hr'));
-
-		root.appendChild(noteDiv);	
-
-	}
-}
-
-
-
-
-
 
 function editNote(id, title, text){
 	var form = document.getElementById("editForm");
@@ -222,14 +108,6 @@ function hideEditForm(){
 }
 
 
-
-function onStart(){
-	getUserNotes();
-	getUserName();
-}
-
-onStart()
-
 </script>
 
 
@@ -243,15 +121,20 @@ if(!isset($_SESSION["userid"])){
 	exit;
 }
 
+$user_id = $_SESSION["userid"];
+$mongo = new Mongo();
+$users = $mongo->mydb->users;
+$user = $users->findOne(array("_id" => $user_id));
+
+echo "<p>Hello, " . $user["login"] . "</p>";
+
 ?>
 
 
 
-<p> Helo, <span id= "UserNamePlace"></span></p>
 
 
 
-<input type="button" value="Get notes" onclick="getUserNotes()"></p>
 
 
 <input type="button" value="Delete my Account" onclick="deleteAcc()"></p>
@@ -282,14 +165,47 @@ if(!isset($_SESSION["userid"])){
 </div>
 
 
-<div id="NotesCollection">
+<?php
 
-</div>
-
-
-
+$mongo = new Mongo();
+foreach($mongo->mydb->notes->find(array("user_id" => $user_id)) as $note){
 
 
+
+
+	echo $note["title"];	
+	echo "</br>";
+	echo $note["_id"];	
+	echo "</br>";
+	echo $note["text"];
+	
+	echo '<p><input type="button" value="Remove" onclick="removeNote(';
+	echo "'";
+	echo $note["_id"];	
+	echo "'";
+	echo ')"></p>';
+	
+
+	echo '<p><input type="button" value="Edit" onclick="editNote(';
+	echo "'";
+	echo $note["_id"];
+	echo "',";
+	echo "'";
+	echo $note["title"];
+	echo "',";
+	echo "'";
+	echo $note["text"];
+	echo "'";
+	echo ')"></p>';
+
+	echo "<hr>";
+
+}
+
+
+
+
+?>
 
 </body>
 
