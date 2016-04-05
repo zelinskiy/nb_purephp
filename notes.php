@@ -6,15 +6,16 @@
 	<style type="text/css">
 		
 		#editForm{
-		padding:150px;
+		padding-left:5000px;
+		padding-right:5000px;
+		padding-bottom:5000px;
 		position: fixed;
-		top: 20%;
+		top: 0%;
 		transform: translateY(-50%);
 		left: 50%;
 		transform: translateX(-50%);
-		margin-left: -100px;
-		margin-top: -100px;
-		background-color: #D1D1D1;
+
+		background:rgba(200,200,100, 0.7);
 		z-index:100;
 		}
 
@@ -348,7 +349,6 @@ if(!isset($_SESSION["userid"])){
    <p><input type="button" id="editButton" value="Edit" onclick="updateNote(document.getElementById('editId').value,document.getElementById('editTitleBox').value, document.getElementById('editTextBox').value)"></p>
 </form>
 <input type="button" value="Close Edit" onclick="hideEditForm()"></p>
-<hr>
 </div>
 
 
