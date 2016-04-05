@@ -2,6 +2,23 @@
 <head>
 	<meta charset="utf-8" /> 
 	<script src="jquery.js"></script>
+
+	<style type="text/css">
+		
+		#editForm{
+		padding:150px;
+		position: fixed;
+		top: 20%;
+		transform: translateY(-50%);
+		left: 50%;
+		transform: translateX(-50%);
+		margin-left: -100px;
+		margin-top: -100px;
+		background-color: #D1D1D1;
+		z-index:100;
+		}
+
+	</style>
 </head>
 
 
@@ -76,6 +93,7 @@ function updateNote(id, title, text){
 		success:function() {
 			//alert("updated note");
 			//location.reload();
+			hideEditForm();
 			getUserNotes();
 		},
 		error:function(){
@@ -177,7 +195,7 @@ function showNotes(){
 		var noteTextP = document.createElement('p');
 
 		noteTitleP.innerHTML = mynote["title"];
-		noteTextP.innerHTML = mynote["text"];
+		noteTextP.innerHTML = mynote["text"].replace(/\n/g, "<br />");
 
 		noteDiv.appendChild(noteTitleP);
 		noteDiv.appendChild(noteTextP);
@@ -218,6 +236,11 @@ function showNotes(){
 
 
 
+function clearAddForm(){
+	document.getElementById("text").value = "";
+	document.getElementById("title").value = "";
+}
+
 
 
 
@@ -235,7 +258,7 @@ function hideEditForm(){
 }
 
 
-function bindEventsOnEnter(){
+function bindEventsOnKeys(){
 	$("#text").keypress(function(event){
 		if(event.keyCode == 13){
 			$("#AddButton").click();
@@ -258,13 +281,22 @@ function bindEventsOnEnter(){
 			$("#editButton").click();
 			}
 		});
+
+
+	$(document).keyup(function(e) {
+	     if (e.keyCode == 27) { 
+	     	hideEditForm();
+	    }
+	});
+
+
 }
 
 
 function onStart(){
 	getUserNotes();
 	getUserName();
-	bindEventsOnEnter();
+	bindEventsOnKeys();
 	
 }
 
@@ -289,9 +321,6 @@ if(!isset($_SESSION["userid"])){
 
 <p> Helo, <span id= "UserNamePlace"></span></p>
 
-
-
-<input type="button" value="Get notes" onclick="getUserNotes()"></p>
 
 
 <input type="button" value="Delete my Account" onclick="deleteAcc()"></p>
