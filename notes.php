@@ -1,6 +1,7 @@
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<meta charset="utf-8" /> 
+	<script src="jquery.js"></script>
 </head>
 
 
