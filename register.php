@@ -2,7 +2,7 @@
 
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="jquery.js"></script>
+	<script src="js/jquery.js"></script>
 </head>
 
 <script>
@@ -10,7 +10,7 @@
 function register(login, pass){
 	$.ajax({
 		type: "POST",
-		url: 'reg.php',
+		url: 'Handlers/reg.php',
 		data:{
 			login:login,
 			pass:pass

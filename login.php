@@ -3,32 +3,12 @@
 <head>
 	<meta charset="utf-8" /> 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="jquery.js"></script>
+	<script src="js/jquery.js"></script>
+
+
+	<script src="js/login_page.js"></script>
 </head>
 
-<script>
-
-function authorize(login, pass){
-	$.ajax({
-		type: "POST",
-		url: 'authorize.php',
-		data:{
-			login:login,
-			pass:pass
-		},
-		success:function(html) {
-			alert("logged");
-			window.location.replace("notes.php");
-		},
-		error:function(){
-			alert("fail to login");
-		}
-	});
-}
-
-
-
-</script>
 
 <h2>Login</h2>
 <form action="">

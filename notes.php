@@ -1,7 +1,18 @@
+<?php
+session_start();
+
+if(!isset($_SESSION["userid"])){
+	header('Location: login.php');
+	exit;
+}
+
+?>
 <html>
 <head>
 	<meta charset="utf-8" /> 
-	<script src="jquery.js"></script>
+	<script src="js/jquery.js"></script>
+
+	<script src="js/notes_page.js"></script>
 
 	<style type="text/css">
 		
@@ -35,132 +46,7 @@
 
 
 
-//======POST REQUESTS========
 
-var NotesArray = []
-
-
-
-function addNote(title, text){
-	$.ajax({
-		type: "POST",
-		url: 'addNote.php',
-		data:{
-			title:title,
-			text:text
-		},
-		success:function() {
-			//alert("note added");
-			//location.reload();
-			clearAddForm();
-			getUserNotes();
-		},
-		error:function(){
-			alert("failed to add note");
-		}
-	});
-}
-
-
-
-function removeNote(id){
-	$.ajax({
-		type: "POST",
-		url: 'removeNote.php',
-		data:{
-			id:id
-		},
-		success:function() {
-			//alert("note removed");
-			//location.reload();
-			getUserNotes();
-		},
-		error:function(){
-			alert("failed to remove note");
-		}
-	});
-}
-
-
-
-function updateNote(id, title, text){
-	$.ajax({
-		type: "POST",
-		url: 'updateNote.php',
-		data:{
-			id:id,
-			title:title,
-			text:text			
-		},
-		success:function() {
-			//alert("updated note");
-			//location.reload();
-			hideEditForm();
-			getUserNotes();
-		},
-		error:function(){
-			alert("failed to update note");
-		}
-	});
-}
-
-
-function logOut(){
-	window.location.replace("logout.php");
-}
-
-
-function deleteAcc(){
-	$.ajax({
-		type: "POST",
-		url: 'deleteUser.php',
-		data:{		
-		},
-		success:function() {
-			alert("Your account deleted");
-			logOut();
-		},
-		error:function(){
-			alert("failed to delete your acc");
-		}
-	});
-}
-
-
-function getUserNotes(){
-	$.ajax({
-		type: "POST",
-		url: 'getUserNotes.php',
-		data:{		
-		},
-		success:function(h) {
-			NotesArray = JSON.parse(h);
-			showNotes();
-		},
-		error:function(){
-			alert("failed to get your notes");
-		}
-	});
-}
-
-
-function getUserName(){
-	$.ajax({
-		type: "POST",
-		url: 'getUserName.php',
-		data:{		
-		},
-		success:function(h) {
-			console.log(h);
-			showUserName(h);
-		},
-		error:function(){
-			alert("failed to get your name");
-		}
-	});
-}
-
-//======END OF POST REQUESTS========
 
 
 
@@ -309,15 +195,7 @@ onStart()
 
 <p>My Notes</p>
 
-<?php
-session_start();
 
-if(!isset($_SESSION["userid"])){
-	header('Location: login.php');
-	exit;
-}
-
-?>
 
 
 
