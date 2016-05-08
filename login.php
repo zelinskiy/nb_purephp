@@ -10,12 +10,14 @@
 </head>
 
 
+
+
 <h2>Login</h2>
 <form action="">
    <p>Login:<input type="text" id="login"></p>
    <p>Password:<input type="text" id="pass"></p>
-   <p><input type="button" value="Login" onclick="authorize(document.getElementById('login').value, document.getElementById('pass').value)"></p>
-   <p><input type="button" value="Register" onclick="window.location.replace('register.php');"></p>
+   <p><input id="LoginButton" type="button" value="Login" ></p>
+   <p><input id="RegisterButton" type="button" value="Register"></p>
 </form>
 <hr>
 
