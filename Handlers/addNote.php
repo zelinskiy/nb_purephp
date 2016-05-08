@@ -7,11 +7,16 @@ function insertNote($title, $text){
 
 	$mongo = new Mongo();
 	$notes = $mongo->mydb->notes;
-	$notes->insert(array(
+
+	$data = array(
 		"user_id" => $user_id,
 		"title" => $title,
 		"text" => $text
-		));
+		);
+
+	$notes->insert($data);
+
+	echo $data["_id"];
 }
 
 

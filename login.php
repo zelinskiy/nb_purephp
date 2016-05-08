@@ -1,35 +1,47 @@
+<?php
+session_start();
+?>
+
 <html>
 
 <head>
 	<meta charset="utf-8" /> 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="js/jquery.js"></script>
-
+	<script src="jquery.js"></script>
 
 	<script src="js/login_page.js"></script>
+
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/login.css">
 </head>
 
 
 
 
-<h2>Login</h2>
-<form action="">
-   <p>Login:<input type="text" id="login"></p>
-   <p>Password:<input type="text" id="pass"></p>
-   <p><input id="LoginButton" type="button" value="Login" ></p>
-   <p><input id="RegisterButton" type="button" value="Register"></p>
-</form>
-<hr>
 
 
 
+<div id="LoginForm" class="panel panel-primary">
 
-<?php
+	<div class="panel-heading"><h2>Login</h2></div>
 
-session_start();
+	<div class="panel-body">
+	<form action="">
+		<p><input class="form-control" type="text" id="login"></p>
+		<p><input class="form-control" type="text" id="pass"></p>
+		<p>
+			<input class="btn btn-default" type="button" id="LoginButton" value="Login">
+			<input class="btn btn-default" type="button" id="RegisterButton" value="Register">
+		</p>
+	</form>
+	</div>
+
+	<div id="ErrorBox" style="display: none" class="panel-footer">Panel footer</div>
+</div>
 
 
-?>
 
 
 </html>

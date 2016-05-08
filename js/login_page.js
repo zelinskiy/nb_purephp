@@ -7,15 +7,33 @@ function authorize(login, pass){
 			pass:pass
 		},
 		success:function(html) {
-			alert("logged");
-			window.location.replace("notes.php");
+			succeed();
+			setTimeout(redirect, 1000);
+			
 		},
 		error:function(){
-			alert("fail to login");
+			failed("Fail to login");
 		}
 	});
 }
 
+
+function failed(err){
+	$("#LoginForm").attr("class", "panel panel-danger");
+	$("#ErrorBox").html(err);
+	$("#ErrorBox").show();
+}
+
+function succeed(){
+	$("#LoginForm").attr("class", "panel panel-success");
+	$("#ErrorBox").html("Correct");
+	$("#ErrorBox").show();
+}
+
+
+function redirect(){
+	window.location.replace("notes.php");
+}
 
 
 

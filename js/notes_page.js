@@ -12,9 +12,8 @@ function addNote(title, text){
 			title:title,
 			text:text
 		},
-		success:function() {
-			//alert("note added");
-			//location.reload();
+		success:function(note_id) {			
+			attachFile(note_id);
 			clearAddForm();
 			getUserNotes();
 		},
@@ -23,6 +22,21 @@ function addNote(title, text){
 		}
 	});
 }
+
+function attachFile(id) {
+		var fd = new FormData(document.getElementById("fileUpload"));
+		fd.append("id", id);
+		$.ajax({
+			url: "Files/attachFile.php",
+			type: "POST",
+			data: fd,
+			processData: false,  // tell jQuery not to process the data
+			contentType: false   // tell jQuery not to set contentType
+		}).done(function( data ) {
+			console.log( data );
+		});
+	}
+
 
 
 
@@ -124,6 +138,7 @@ function getUserName(){
 }
 
 //======END OF POST REQUESTS========
+
 
 
 
@@ -238,6 +253,7 @@ function showNotes(){
 	var A = NotesArray;
 
 	var root = document.getElementById("NotesCollection");
+
 	root.innerHTML = "";
 
 	for(i=A.length-1; i>=0; i--){		
@@ -246,15 +262,20 @@ function showNotes(){
 
 		var noteDiv = document.createElement('div');
 		noteDiv.id = mynote["id"];
+
+		noteDiv.className = "col-sm-3 well";
+		//noteDiv.style.backgroundColor = "#A3BAC2";
 		
 		//=========================		
 		var noteTitleP = document.createElement('p');
 		var noteTextP = document.createElement('p');
 
+
 		noteTitleP.innerHTML = mynote["title"];
-		noteTextP.innerHTML = mynote["text"].replace(/\n/g, "<br />");
+		noteTextP.innerHTML = mynote["text"].replace(/\n/g, "<br/>");
 
 		noteDiv.appendChild(noteTitleP);
+		noteDiv.appendChild(document.createElement("hr"));
 		noteDiv.appendChild(noteTextP);
 		//=====================
 
@@ -266,6 +287,9 @@ function showNotes(){
 
 		noteDeleteButton.value = "Delete";
 		noteEditButton.value = "Edit";
+
+		noteEditButton.className = "btn btn-default";
+		noteDeleteButton.className = "btn btn-default";
 
 		noteDeleteButton.onclick = function(id){
 			return function(){
@@ -284,11 +308,33 @@ function showNotes(){
 		noteDiv.appendChild(noteEditButton);
 
 		//=================
-		noteDiv.appendChild(document.createElement('hr'));
+
+
+		var pic = document.createElement("img");
+		var imgurl = "pics/" + mynote["id"] + ".png";
+
+
+		if(imgExist(imgurl)){
+			pic.src = imgurl;
+			noteDiv.appendChild(pic);
+		}
 
 		root.appendChild(noteDiv);	
 
 	}
+}
+
+
+
+function imgExist(url) 
+{
+	var http = new XMLHttpRequest();
+
+	http.open('HEAD', url, false);
+	http.send();
+
+	return http.status != 404;
+
 }
 
 
@@ -302,14 +348,30 @@ function clearAddForm(){
 
 
 function editNote(id, title, text){
-	var form = $("#editForm");
-	form.style.display = "block";
+	$("#editForm").css("display", "block");
 	$('#editId').val(id);
 	$('#editTitleBox').val(title);
 	$('#editTextBox').val(text);
 }
 
 function hideEditForm(){
-	var form = $("#editForm");
-	form.style.display = "none";
+	$("#editForm").css("display", "none");
+}
+
+
+
+
+
+
+
+
+
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }

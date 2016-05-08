@@ -1,0 +1,64 @@
+
+
+
+
+#HeadJumbotron{
+	padding-left:20%;
+
+}
+
+
+#editForm{
+	padding-top:10%;
+	padding-left:5000px;
+	padding-right:5000px;
+	padding-bottom:5000px;
+	position: fixed;
+	top: 0%;
+	transform: translateY(-50%);
+	left: 50%;
+	transform: translateX(-50%);
+
+	background:rgba(200,200,100, 0.7);
+	z-index:100;
+}
+
+
+
+
+#editTextBox{
+	height:150px;
+}
+
+
+#text{
+	height:150px;
+}
+
+#AddForm{
+	margin-left:10%;
+	width:300px;
+}
+
+
+#NotesCollection {
+	padding-left:10%;
+}
+
+
+#NotesCollection div{
+	width:350px;	
+	margin:10px;
+}
+
+#NotesCollection p{
+	overflow: hidden;
+	text-overflow: ellipsis;
+    word-wrap:break-word;
+    max-height:500px;
+}
+
+#NotesCollection img{
+	width: 300px;
+	display: block;
+}
