@@ -63,6 +63,7 @@ body{
 	background-color: #C9A075;
 	font-family: Anglican;
 	font-size: 2em;
+	border:none;
 }
 
 #text {
@@ -70,16 +71,6 @@ body{
 }
 
 
-#NotesCollection > .well {
-  background-color: #C8B5A1;
-  border: none;
-  color:black;
-}
-
-#NotesCollection > .well input {
-  background-color: #C9A075;
-
-}
 
 
 #HeadJumbotron{
@@ -125,12 +116,14 @@ body{
 	background-color: #82694F;
 	font-family: Anglican;
 	font-size: 2em;
+	border:none;
 }
 
 #CloseEditButton{	
 	background-color: #82694F;
 	font-family: Anglican;
 	font-size: 2em;
+	border:none;
 }
 
 
@@ -145,6 +138,19 @@ body{
 
 #NotesCollection {
 	padding-left:10%;
+}
+
+#NotesCollection > .well {
+  background-color: #C8B5A1;
+  border: none;
+  color:black;
+}
+
+#NotesCollection > .well input {
+  background-color: #C9A075;
+  border:none;
+  margin-right: 5px;
+
 }
 
 

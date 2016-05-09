@@ -17,7 +17,7 @@ session_start();
 	<link rel="stylesheet" href="css/login.css">
 
 	<script src="js/bootstrap.js"></script>
-	
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
 </head>
 
@@ -27,7 +27,7 @@ session_start();
 
 
 
-<div id="LoginForm" class="panel panel-primary">
+<div id="LoginForm" class="panel panel-default">
 
 	<div class="panel-heading"><h2>NotaBenes</h2></div>
 
