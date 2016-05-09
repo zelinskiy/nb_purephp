@@ -3,6 +3,17 @@
     src: url(/fonts/AnglicanText.ttf);
 }
 
+h1 {
+	font-size: 15em;
+    font-family: Anglican;
+    background-color: #C8B5A1;
+
+
+    position: absolute;
+    right: 10%;
+    top:300px;
+
+}
 
 
 body{
@@ -20,6 +31,8 @@ body{
 }
 
 #ActiveButton > button{
+	background-color: #82694F;
+	border-color: black;
 	font-size: 2em;
 }
 
@@ -30,13 +43,26 @@ body{
 
 
 #AddForm > .panel-heading {
-  background-color: #C8B5A1;
-  border:none;
+	background-color: #C8B5A1;
+	border:none;
 }
+
+#AddForm > .panel-heading h2 {
+	text-align: center;
+	font-size: 4em;
+	font-family: Anglican;
+}
+
 
 #AddForm > .panel-body {
 	background-color: #C8B5A1;
 	border:none;
+}
+
+#AddButton  {
+	background-color: #C9A075;
+	font-family: Anglican;
+	font-size: 2em;
 }
 
 #text {
@@ -50,6 +76,11 @@ body{
   color:black;
 }
 
+#NotesCollection > .well input {
+  background-color: #C9A075;
+
+}
+
 
 #HeadJumbotron{
 	padding-left:20%;
@@ -57,9 +88,7 @@ body{
 
 
 #editForm{
-
-
-	padding-top:10%;
+	padding-top:5%;
 	padding-left:5000px;
 	padding-right:5000px;
 	padding-bottom:5000px;
@@ -73,7 +102,11 @@ body{
 	z-index:100;
 }
 
-
+#editForm > .panel-heading h2 {
+	text-align: center;
+	font-size: 5em;
+	font-family: Anglican;
+}
 
 
 #editTextBox{
@@ -85,6 +118,23 @@ body{
 #text{
 	height:150px;
 }
+
+
+
+#editButton{
+	background-color: #82694F;
+	font-family: Anglican;
+	font-size: 2em;
+}
+
+#CloseEditButton{	
+	background-color: #82694F;
+	font-family: Anglican;
+	font-size: 2em;
+}
+
+
+
 
 #AddForm{
 	margin-top: 5%;

@@ -185,34 +185,6 @@ $(document).ready(function() {
 	);
 
 
-
-
-	/*
-	$("#text").keypress(function(event){
-		if(event.keyCode == 13){
-			$("#AddButton").click();
-			}
-		});
-
-	$("#title").keyup(function(event){
-		if(event.keyCode == 13){
-			$("#AddButton").click();
-			}
-		});
-	*/
-
-	$("#editTextBox").keyup(function(event){
-		if(event.keyCode == 13){
-			$("#editButton").click();
-			}
-		});
-	$("#editTextBox").keyup(function(event){
-		if(event.keyCode == 13){
-			$("#editButton").click();
-			}
-		});
-
-
 	$(document).keyup(function(e) {
 	     if (e.keyCode == 27) { 
 	     	hideEditForm();
