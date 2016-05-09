@@ -5,11 +5,15 @@ session_start();
 <html>
 
 <head>
+	<title>NotaBenes</title>
+
+	<link rel="icon" href="/pictures/favicon.png">
+
 	<meta charset="utf-8" /> 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="js/jquery.js"></script>
+	<script src="/js/jquery.js"></script>
 
-	<script src="js/login_page.js"></script>
+	<script src="/js/login_page.js"></script>
 
 
 
@@ -22,6 +26,7 @@ session_start();
 </head>
 
 
+<body>
 
 
 
@@ -29,7 +34,7 @@ session_start();
 
 <div id="LoginForm" class="panel panel-default">
 
-	<div class="panel-heading"><h2>NotaBenes</h2></div>
+	<div class="panel-heading"><h2>Nota Benes</h2></div>
 
 	<div class="panel-body">
 	<form action="">
@@ -46,6 +51,6 @@ session_start();
 </div>
 
 
-
+</body>
 
 </html>

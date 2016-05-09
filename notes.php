@@ -9,20 +9,22 @@ if(!isset($_SESSION["userid"])){
 ?>
 <html>
 <head>
-
+	<title>NotaBenes</title>
+	<link rel="icon" href="/pictures/favicon.png">
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 
 
 	<meta charset="utf-8" /> 
-	<script src="js/jquery.js"></script>
+	<script src="/js/jquery.js"></script>
 
 
 	<!--script src="js/bootstrap.js"></script-->
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-	<script src="js/notes_page.js"></script>
+	<script src="/js/notes_page.js"></script>
 
 
 
@@ -59,9 +61,9 @@ if(!isset($_SESSION["userid"])){
 		<p><input class="btn btn-default" type="button" id="AddButton" value="Add"></p>
 	</form>
 
-	<form method="post" id="fileUpload">
+	<!--form method="post" id="fileUpload">
         <input  type="file" name="file" />
-    </form>
+    </form-->
 
 	</div>
 </div>
