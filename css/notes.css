@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Anglican;
+    src: url(/fonts/AnglicanText.ttf);
+}
+
+
 
 body{
 	background: url(/pictures/chaucer.jpg) center fixed;

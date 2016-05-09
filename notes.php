@@ -19,19 +19,19 @@ if(!isset($_SESSION["userid"])){
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+	<script src="js/bootstrap.js"></script>
 	<script src="js/notes_page.js"></script>
 
 
 
 
 	<link rel="stylesheet" type="text/css" href="css/notes.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
 
 
 
 </head>
 <body>
-
-
 
 
 
@@ -58,7 +58,7 @@ if(!isset($_SESSION["userid"])){
 	</form>
 
 	<form method="post" id="fileUpload">
-        <input type="file" name="file" />
+        <input  type="file" name="file" />
     </form>
 
 	</div>
