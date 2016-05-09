@@ -7,7 +7,7 @@ session_start();
 <head>
 	<meta charset="utf-8" /> 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script src="jquery.js"></script>
+	<script src="js/jquery.js"></script>
 
 	<script src="js/login_page.js"></script>
 
@@ -25,7 +25,7 @@ session_start();
 
 <div id="LoginForm" class="panel panel-primary">
 
-	<div class="panel-heading"><h2>Login</h2></div>
+	<div class="panel-heading"><h2>NotaBenes</h2></div>
 
 	<div class="panel-body">
 	<form action="">

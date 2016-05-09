@@ -6,15 +6,30 @@ function register(login, pass){
 			login:login,
 			pass:pass
 		},
-		success:function() {
-			alert("Registered successfully");
-			window.location.replace("login.php");
+		success:function(html) {
+			succeed();
+			setTimeout(redirect, 1000);
+			
 		},
-		error:function(){
-			alert("Login/password incorrect");
+		error:function(html){
+			failed("Login/Password incorrect");
 		}
 	});
 }
+
+
+function failed(err){
+	$("#LoginForm").attr("class", "panel panel-danger");
+	$("#ErrorBox").html(err);
+	$("#ErrorBox").show();
+}
+
+function succeed(){
+	$("#LoginForm").attr("class", "panel panel-success");
+	$("#ErrorBox").html("Correct");
+	$("#ErrorBox").show();
+}
+
 
 
 
@@ -24,6 +39,10 @@ function register(login, pass){
 $(document).ready(function() {
 	$("#RegisterButton").click(function(){
 		register($('#login').val(), $('#pass').val());
+		}
+	);
+	$("#ReturnButton").click(function(){
+		window.location.replace("login.php");
 		}
 	);
 });

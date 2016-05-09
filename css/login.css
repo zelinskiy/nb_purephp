@@ -1,5 +1,18 @@
 
+body{
+	background: url(/pictures/dante.jpg) center fixed;
+	background-size: 100%;
+}
+
 
 #LoginForm{
 	width:300px;
+
+	position: fixed;
+	top: 25%;
+	transform: translateY(-50%);
+	left: 50%;
+	transform: translateX(-50%);
+	z-index:100;
 }
+

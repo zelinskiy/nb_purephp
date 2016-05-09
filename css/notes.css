@@ -1,14 +1,58 @@
 
+body{
+	background: url(/pictures/chaucer.jpg) center fixed;
+	background-size: 100%;
+}
 
+
+
+
+#ActiveButton{
+	position: absolute;
+    right: 30px;
+    top:30px;
+}
+
+#ActiveButton > button{
+	font-size: 2em;
+}
+
+
+#AddForm{
+	border: none;
+}
+
+
+#AddForm > .panel-heading {
+  background-color: #C8B5A1;
+  border:none;
+}
+
+#AddForm > .panel-body {
+	background-color: #C8B5A1;
+	border:none;
+}
+
+#text {
+	resize:none;
+}
+
+
+#NotesCollection > .well {
+  background-color: #C8B5A1;
+  border: none;
+  color:black;
+}
 
 
 #HeadJumbotron{
 	padding-left:20%;
-
 }
 
 
 #editForm{
+
+
 	padding-top:10%;
 	padding-left:5000px;
 	padding-right:5000px;
@@ -27,7 +71,8 @@
 
 
 #editTextBox{
-	height:150px;
+	width:50vw;
+	height:20vw;
 }
 
 
@@ -36,6 +81,7 @@
 }
 
 #AddForm{
+	margin-top: 5%;
 	margin-left:10%;
 	width:300px;
 }

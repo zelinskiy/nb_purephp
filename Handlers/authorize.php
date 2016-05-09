@@ -1,4 +1,6 @@
 <?php
+
+//session_save_path("/tmp");
 session_start();
 
 
@@ -11,7 +13,7 @@ function checkLoginPass($login, $pass){
 		"pass" => $pass,
 	));
 
-	if(isset($user)){		
+	if(isset($user)){
 		$_SESSION["userid"] = $user["_id"];
 	}
 	else{

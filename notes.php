@@ -31,47 +31,24 @@ if(!isset($_SESSION["userid"])){
 </head>
 <body>
 
-<p>My Notes</p>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
-	<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand">NotaBenes</a>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li>
-				<a id="LogoutButton" >Logout</a>
-				</li>
-				<li>
-				<a id="DeleteAccountButton">Delete my account</a>
-				</li>
-				
-			</ul>
-		</div>
-	</div>
-<!-- /.container -->
-</nav>
 
 
 
-<div id="HeadJumbotron" class="jumbotron">
-	<h1>Nota Benes</h1>
-	<p class="lead">Hello, <span id= "UserNamePlace"></p>
+
+
+<div id="ActiveButton" class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-menu-hamburger " 
+  	data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+  <ul class="dropdown-menu dropdown-menu-right">
+    <li><a id="DeleteAccountButton" >Delete my account</a></li>
+    <li><a id="LogoutButton" >Logout</a></li>
+  </ul>
 </div>
 
 
 
-<div id="AddForm" class="panel panel-primary">
-	<div class="panel-heading"><h2>Add note</h2></div>
+<div id="AddForm" class="panel panel-default ">
+	<div class="panel-heading nounderline"><h2>Add note</h2></div>
 	<div class="panel-body">
 	<form action="">
 		<p><input class="form-control" type="text" id="title"></p>
