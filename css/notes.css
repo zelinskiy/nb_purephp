@@ -152,6 +152,12 @@ body{
 	border:none;
 }
 
+#AddCheckboxToEditTextButton{
+	background-color: #82694F;
+	font-size: 1em;
+	border:none;
+}
+
 
 
 
@@ -201,4 +207,15 @@ body{
 #NotesCollection img{
 	width: 300px;
 	display: block;
+}
+
+
+
+
+
+
+
+#AddCheckboxToAddTextButton{
+	background-color: transparent;
+	border: none;
 }

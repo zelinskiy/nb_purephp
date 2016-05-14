@@ -141,6 +141,19 @@ $(document).ready(function() {
 	);
 
 
+	$("#AddCheckboxToAddTextButton").click(function(){
+		insertTxtAtCursor("text", "<uch>\n");
+		}
+	);
+
+	$("#AddCheckboxToEditTextButton").click(function(){
+		insertTxtAtCursor("editTextBox", "<uch>\n");
+		}
+	);
+
+
+
+
 	$("#editButton").click(function(){
 		updateNote(
 			$('#editId').val(),
@@ -254,6 +267,16 @@ function replaceChUch(i, j){
 	
 }
 
+
+
+
+
+
+function insertTxtAtCursor(textareaId, txt){
+    var caretPos = document.getElementById(textareaId).selectionStart;
+    var textAreaTxt = $("#"+textareaId).val();
+    $("#"+textareaId).val(textAreaTxt.substring(0, caretPos) + txt + textAreaTxt.substring(caretPos) );
+}
 
 
 

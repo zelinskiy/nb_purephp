@@ -53,8 +53,7 @@ if(!isset($_SESSION["userid"])){
 
 
 <div id="AddForm" class="panel panel-default ">
-	<div class="panel-heading nounderline">
-		
+	<div class="panel-heading nounderline">		
 		<div class="dropdown" >			
 			<button id="TogglePatternButton" type="button" class="pull-right btn btn-default dropdown-toggle glyphicon glyphicon-menu-hamburger " 
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
@@ -65,7 +64,9 @@ if(!isset($_SESSION["userid"])){
 				<li><a id="LoadContactButton">Contact</a></li>
 			</ul>
 		</div>
+		<button id = "AddCheckboxToAddTextButton" class="btn btn-default glyphicon glyphicon-ok"></button>
 		<h2>Add note</h2>
+
 	</div>
 	<div class="panel-body">
 	<form action="">
@@ -142,7 +143,9 @@ Notes:
 		<p><textarea class="form-control" id="editTextBox"></textarea></p>
 		<p>
 			<input class="btn btn-default" type="button" id="editButton" value="Edit">
-			<input class="btn btn-default" type="button" id="CloseEditButton" value="Close Edit"></p>
+			<input class="btn btn-default" type="button" id="CloseEditButton" value="Close Edit">
+
+			<button type="button" id = "AddCheckboxToEditTextButton" class="pull-right btn btn-default glyphicon glyphicon-ok"></button>
 		</p>
 
 	</form>
