@@ -21,16 +21,20 @@ body{
 	transform: translateX(-50%);
 	z-index:100;
 
-	background-color: #F3EFE3;
-	border: 4px solid black;
+	
+	background-color: rgba(0,0,0,0);
+
+
+
+
 }
 
 
 
 
 
-#LoginForm > .panel-heading {	
-	background-color: #F3EFE3;
+#LoginForm > .panel-heading {
+	background-color: rgba(245, 245, 245, 0.97);
 	border:none;
 }
 
@@ -45,28 +49,22 @@ body{
 #LoginForm > .panel-body {
 	vertical-align: center;
 	padding: 50px;
-	background-color: #F3EFE3;	
+
+	background-color: #F3EFE3;
+	background-color: rgba(245, 245, 245, 0.75);
+
 }
 
 
 
 
 #LoginButton{
-	font-size: 2em;
-	font-family: Anglican;
-	border:none;
 }
 
 #RegisterButton{
-	font-size: 2em;
-	font-family: Anglican;
-	border:none;
 }
 
 #ReturnButton{
-	font-size: 2em;
-	font-family: Anglican;
-	border:none;
 }
 
 

@@ -12,8 +12,7 @@ function addNote(title, text){
 			title:title,
 			text:text
 		},
-		success:function(note_id) {			
-			attachFile(note_id);
+		success:function(note_id) {
 			clearAddForm();
 			getUserNotes();
 		},
@@ -23,19 +22,6 @@ function addNote(title, text){
 	});
 }
 
-function attachFile(id) {
-		var fd = new FormData(document.getElementById("fileUpload"));
-		fd.append("id", id);
-		$.ajax({
-			url: "Files/attachFile.php",
-			type: "POST",
-			data: fd,
-			processData: false,  // tell jQuery not to process the data
-			contentType: false   // tell jQuery not to set contentType
-		}).done(function( data ) {
-			console.log( data );
-		});
-	}
 
 
 
@@ -48,8 +34,6 @@ function removeNote(id){
 			id:id
 		},
 		success:function() {
-			//alert("note removed");
-			//location.reload();
 			getUserNotes();
 		},
 		error:function(){
@@ -70,8 +54,6 @@ function updateNote(id, title, text){
 			text:text			
 		},
 		success:function() {
-			//alert("updated note");
-			//location.reload();
 			hideEditForm();
 			getUserNotes();
 		},
@@ -184,6 +166,20 @@ $(document).ready(function() {
 		}
 	);
 
+	$("#LoadRecipeButton").click(function(){
+		loadPattern("NotePatternRecipe");
+		}
+	);
+
+	$("#LoadMeetingButton").click(function(){
+		loadPattern("NotePatternMeeting");
+		}
+	);
+
+	$("#LoadContactButton").click(function(){
+		loadPattern("NotePatternContact");
+		}
+	);
 
 	$(document).keyup(function(e) {
 	     if (e.keyCode == 27) { 
@@ -198,6 +194,65 @@ $(document).ready(function() {
 
 
 
+function funcText(i, j){
+	return " onclick = \'replaceChUch(" + i + "," + j + ")\'/>";
+}
+
+
+
+
+function replaceHtmlCheckbox(input, i){
+	var uncheckedText = '<input type="checkbox" id="uch"';
+	var checkedText = '<input type="checkbox" checked id="ch"';
+
+
+
+	var lines = input.split('\n').filter(function(s){
+			return s.indexOf("<uch>") > -1 || s.indexOf("<ch>") > -1;
+		});
+
+	for(var j = 0; j<lines.length; j++){
+		line = lines[j];
+		oldline = line;
+
+		line = line
+				.replace("<uch>",uncheckedText + funcText(i, j))
+				.replace("<ch>",checkedText + funcText(i, j));
+
+		input = input.replace(oldline, line);
+	}
+
+	return input.replace(/\n/g, "<br/>");
+
+}
+
+
+
+
+function replaceChUch(i, j){
+	var note = NotesArray[i];
+	var text = note["text"];
+
+	var lines = text.split('\n').filter(function(s){
+			return s.indexOf("<uch>") > -1 || s.indexOf("<ch>") > -1;
+		});
+
+	line = lines[j];
+	oldline = line;
+
+	if(line.indexOf("<uch>") > -1){
+		line = line.replace("<uch>","<ch>");
+	}
+	else{
+		line = line.replace("<ch>","<uch>");
+	}
+	
+
+	text = text.replace(oldline, line);
+	updateNote(note["id"], note["title"], text);
+
+	
+}
 
 
 
@@ -206,8 +261,12 @@ $(document).ready(function() {
 
 
 
+function loadPattern(id){
+	var pattern = $("#"+id).html();
 
+	$("#text").html(pattern);
 
+}
 
 
 
@@ -236,7 +295,6 @@ function showNotes(){
 		noteDiv.id = mynote["id"];
 
 		noteDiv.className = "col-sm-3 well";
-		//noteDiv.style.backgroundColor = "#A3BAC2";
 		
 		//=========================		
 		var noteTitleP = document.createElement('p');
@@ -244,7 +302,10 @@ function showNotes(){
 
 
 		noteTitleP.innerHTML = mynote["title"];
-		noteTextP.innerHTML = mynote["text"].replace(/\n/g, "<br/>");
+		if(mynote["text"]){
+			noteTextP.innerHTML = replaceHtmlCheckbox(mynote["text"], i);
+		}
+		
 
 		noteDiv.appendChild(noteTitleP);
 		noteDiv.appendChild(document.createElement("hr"));
@@ -281,15 +342,6 @@ function showNotes(){
 
 		//=================
 
-
-		var pic = document.createElement("img");
-		var imgurl = "pics/" + mynote["id"] + ".png";
-
-
-		if(imgExist(imgurl)){
-			pic.src = imgurl;
-			noteDiv.appendChild(pic);
-		}
 
 		root.appendChild(noteDiv);	
 

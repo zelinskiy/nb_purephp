@@ -39,11 +39,12 @@ if(!isset($_SESSION["userid"])){
 
 
 
-
 <div id="ActiveButton" class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-menu-hamburger " 
   	data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
   <ul class="dropdown-menu dropdown-menu-right">
+  	<li><a>Hello, <span id = "UserNamePlace"></span></a></li>
+  	<li role="separator" class="divider"></li>
     <li><a id="DeleteAccountButton" >Delete my account</a></li>
     <li><a id="LogoutButton" >Logout</a></li>
   </ul>
@@ -52,21 +53,81 @@ if(!isset($_SESSION["userid"])){
 
 
 <div id="AddForm" class="panel panel-default ">
-	<div class="panel-heading nounderline"><h2>Add note</h2></div>
+	<div class="panel-heading nounderline">
+		
+		<div class="dropdown" >			
+			<button id="TogglePatternButton" type="button" class="pull-right btn btn-default dropdown-toggle glyphicon glyphicon-menu-hamburger " 
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+			</button>
+			<ul class="pull-right dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><a id="LoadRecipeButton">Recipe</a></li>
+				<li><a id="LoadMeetingButton">Meeting</a></li>
+				<li><a id="LoadContactButton">Contact</a></li>
+			</ul>
+		</div>
+		<h2>Add note</h2>
+	</div>
 	<div class="panel-body">
 	<form action="">
 		<p><input class="form-control" type="text" id="title"></p>
 		<p><textarea class="form-control" id="text"></textarea></p>
 
-		<p><input class="btn btn-default" type="button" id="AddButton" value="Add"></p>
+		<p><input class="btn btn-default " type="button" id="AddButton" value="Add"></p>
 	</form>
-
-	<!--form method="post" id="fileUpload">
-        <input  type="file" name="file" />
-    </form-->
 
 	</div>
 </div>
+
+
+<div id="NotePatterns" style="display:none;">
+	<div class="well" style="width:300px;">
+		
+<div id = "NotePatternRecipe">Description:
+
+
+
+Ingredients:
+
+
+
+Directions:
+
+
+Notes:
+
+
+</div>
+
+
+<div id = "NotePatternMeeting">When:
+
+Where:
+
+Who:
+
+Notes:
+
+</div>
+
+
+<div id = "NotePatternContact">Full Name:
+
+Phone:
+
+Email:
+
+Notes:
+
+</div>
+
+
+
+	</div>
+
+</div>
+
+
+
 
 
 
@@ -97,6 +158,12 @@ if(!isset($_SESSION["userid"])){
 <div class="row" id="NotesCollection">
 
 </div>
+
+
+
+
+
+
 
 
 

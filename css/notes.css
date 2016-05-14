@@ -25,9 +25,10 @@ body{
 
 
 #ActiveButton{
-	position: absolute;
+	position: fixed;
     right: 30px;
     top:30px;
+    z-index:50;
 }
 
 #ActiveButton > button{
@@ -38,9 +39,18 @@ body{
 
 
 #AddForm{
-	border: none;
+	border-color: black;
+	border-width: 3px;
+	margin-top: 5%;
+	margin-left:10%;
+	width:300px;
 }
 
+
+#TogglePatternButton{
+	background-color: transparent;
+	border: none;
+}
 
 #AddForm > .panel-heading {
 	background-color: #C8B5A1;
@@ -66,9 +76,28 @@ body{
 	border:none;
 }
 
-#text {
-	resize:none;
+
+#text{
+	height:150px;
+	background-color: #C8B5A1;
+	width:parent;
+	border-color: black;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    resize:none;
+	color: black;
 }
+
+
+#title{
+	background-color: #C8B5A1;
+	width:parent;
+	border-color: black;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: black;
+}
+
 
 
 
@@ -106,9 +135,6 @@ body{
 }
 
 
-#text{
-	height:150px;
-}
 
 
 
@@ -129,11 +155,6 @@ body{
 
 
 
-#AddForm{
-	margin-top: 5%;
-	margin-left:10%;
-	width:300px;
-}
 
 
 #NotesCollection {
@@ -142,7 +163,8 @@ body{
 
 #NotesCollection > .well {
   background-color: #C8B5A1;
-  border: none;
+  border-color: black;
+	border-width: 3px;
   color:black;
 }
 
