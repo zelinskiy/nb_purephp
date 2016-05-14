@@ -1,23 +1,18 @@
 <?php
 
-//session_start();
-
-function updateNote($id, $title, $text){
-	
-
-	$mongo = new Mongo();
-	$notes = $mongo->mydb->notes;
-	
-	$newdata = array(
-			"title" => $title,
-			"text" => $text
-			);
+require_once(realpath(__DIR__.'/..').'/Model/Note.php'); 
 
 
-	$notes->update(array("_id" => new MongoId($id)), array('$set' => $newdata));
-}
 
-updateNote($_POST["id"],$_POST["title"],$_POST["text"]);
+
+$newNote = new Note();
+
+$newNote->Id = $_POST["id"];
+$newNote->Title = $_POST["title"];
+$newNote->Text = $_POST["text"];
+
+
+$newNote->Update();
 
 
 
