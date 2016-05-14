@@ -8,7 +8,7 @@ function authorize(login, pass){
 		},
 		success:function(html) {
 			succeed();
-			setTimeout(redirect, 1000);
+			setTimeout(redirect, 500);
 			
 		},
 		error:function(){

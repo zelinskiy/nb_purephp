@@ -1,24 +1,9 @@
 <?php
 session_start();
 
-function deleteUser($id){
-	
+require_once(realpath(__DIR__.'/..').'/Model/User.php');
 
-	$mongo = new Mongo();
-
-	$mongo->mydb->notes->remove(array(
-		"user_id" => new MongoId($_SESSION["userid"])
-		));
-	
-	$users = $mongo->mydb->users;
-	$users->remove(array(
-		"_id" => new MongoId($_SESSION["userid"])
-		));
-}
-
-
-deleteUser();
-
+User::DeleteUserById($_SESSION["userid"]);
 
 
 ?>

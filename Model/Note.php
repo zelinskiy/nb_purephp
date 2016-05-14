@@ -61,6 +61,33 @@ class Note
 
 
 
+	public function GetNotesJSON(){
+
+		$mynotes = $this->GetNotes()->find(array(
+			"user_id" => $this->UserId
+			));
+
+		$json = array();
+		foreach ($mynotes as $note) {
+			array_push($json, array(
+				"id" => $note["_id"]->{'$id'},
+				"title" => $note["title"],
+				"text" => $note["text"]
+				));
+		}
+		return json_encode($json);
+	}
+
+
+
+
+	public static function GetAllNotes(){
+		$Mongo = new Mongo();
+		return $Mongo->mydb->notes;
+	}
+
+
+
 
 
 }

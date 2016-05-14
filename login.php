@@ -38,8 +38,8 @@ session_start();
 
 	<div class="panel-body">
 	<form action="">
-		<p><input class="form-control" type="text" id="login"></p>
-		<p><input class="form-control" type="text" id="pass"></p>
+		<p><input class="form-control" type="text" autocomplete="on" id="login"></p>
+		<p><input class="form-control" type="text" autocomplete="on" id="pass"></p>
 		<p>
 			<input class="btn btn-default" type="button" id="LoginButton" value="Login">
 			<input class="btn btn-default" type="button" id="RegisterButton" value="Register">

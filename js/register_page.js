@@ -1,7 +1,7 @@
 function register(login, pass){
 	$.ajax({
 		type: "POST",
-		url: 'Handlers/reg.php',
+		url: 'Handlers/registerUser.php',
 		data:{
 			login:login,
 			pass:pass
@@ -12,7 +12,7 @@ function register(login, pass){
 			
 		},
 		error:function(html){
-			failed("Login/Password incorrect");
+			failed("Error");
 		}
 	});
 }
@@ -30,7 +30,9 @@ function succeed(){
 	$("#ErrorBox").show();
 }
 
-
+function redirect(){
+	window.location.replace("notes.php");
+}
 
 
 

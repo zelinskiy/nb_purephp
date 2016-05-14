@@ -9,13 +9,12 @@ $user->Login = $_POST["login"];
 $user->Password = $_POST["pass"];
 
 
-if($user->Authorize()){
+if($user->Register()){
 	$_SESSION["userid"] = $user->UserId;
 }
 else{
-	header('HTTP/1.1 400 Bad Request');
+	header('HTTP/1.1 400 Failed To Register');
 }
-
 
 
 

@@ -70,7 +70,7 @@ if(!isset($_SESSION["userid"])){
 	</div>
 	<div class="panel-body">
 	<form action="">
-		<p><input class="form-control" type="text" id="title"></p>
+		<p><input class="form-control" type="text" id="title" autocomplete="off"></p>
 		<p><textarea class="form-control" id="text"></textarea></p>
 
 		<p><input class="btn btn-default " type="button" id="AddButton" value="Add"></p>
@@ -139,7 +139,7 @@ Notes:
 
 	<form  action="" >
 		<input type="hidden" id="editId" value = "">
-		<p><input class="form-control" type="text" id="editTitleBox"></p>
+		<p><input class="form-control" type="text" id="editTitleBox" autocomplete="off"></p>
 		<p><textarea class="form-control" id="editTextBox"></textarea></p>
 		<p>
 			<input class="btn btn-default" type="button" id="editButton" value="Edit">
