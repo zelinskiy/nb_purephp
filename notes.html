@@ -95,7 +95,10 @@
 		<p><input class="form-control" type="text" id="title" autocomplete="off"></p>
 		<p><textarea class="form-control" id="text"></textarea></p>
 
-		<p><input class="btn btn-default " type="button" id="AddButton" value="Add"></p>
+		<p>
+			<input class="btn btn-default " type="button" id="AddButton" value="Add">
+			<span id="SelectedStreetPlaceholder" class="pull-right" style="font-size:12pt;" ></span>
+		</p>
 	</form>
 
 	</div>
@@ -166,12 +169,20 @@ Notes:
 	<form  action="" >
 		<input type="hidden" id="editId" value = "">
 		<p><input class="form-control" type="text" id="editTitleBox" autocomplete="off"></p>
-		<p><textarea class="form-control" id="editTextBox"></textarea></p>
+
+		<p>
+			<textarea class="form-control" id="editTextBox"></textarea>	
+		</p>
+
 		<p>
 			<input class="btn btn-default" type="button" id="editButton" value="Edit">
 			<input class="btn btn-default" type="button" id="CloseEditButton" value="Close Edit">
 
 			<button type="button" id = "AddCheckboxToEditTextButton" class="pull-right btn btn-default glyphicon glyphicon-ok"></button>
+			
+
+			<input type="date" class="pull-right" id="EditNoteDatePicker" style = "background-color:#82694F;border:none; margin-right:5px;"/>
+
 		</p>
 
 	</form>

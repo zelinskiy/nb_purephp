@@ -46,8 +46,7 @@ class Note
 		$newdata = array(
 			"title" => $this->Title,
 			"text" => $this->Text,
-			"date" => $this->Date,
-			"located"=>$this->Located
+			"date" => $this->Date
 		);
 
 

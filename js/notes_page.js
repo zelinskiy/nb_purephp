@@ -7,6 +7,7 @@ var currentStreet = "";
 
 
 
+
 function addNote(title, text, date){
 	$.ajax({
 		type: "POST",
@@ -50,14 +51,15 @@ function removeNote(id){
 
 
 
-function updateNote(id, title, text){
+function updateNote(id, title, text, date){
 	$.ajax({
 		type: "POST",
 		url: 'Handlers/updateNote.php',
 		data:{
 			id:id,
 			title:title,
-			text:text			
+			text:text,
+			date:date,
 		},
 		success:function() {
 			hideEditForm();
@@ -160,7 +162,10 @@ $(document).ready(function() {
 	checkUserIdSessionSet();
 
 	getUserNotes();
-	getUserName();	
+	getUserName();
+
+	
+	
 
 	$("#AddButton").click(function(){
 		addNote(
@@ -189,7 +194,8 @@ $(document).ready(function() {
 		updateNote(
 			$('#editId').val(),
 			$('#editTitleBox').val(),
-			$('#editTextBox').val()
+			$('#editTextBox').val(),
+			$('#EditNoteDatePicker').val()
 			);
 		}
 	);
@@ -240,7 +246,13 @@ $(document).ready(function() {
 		}
 	);
 
+
 	window.setTimeout(function(){$('#NoteLocationPicker').toggle()}, 500);
+
+
+
+	
+
 
 
 
@@ -262,8 +274,16 @@ $(document).ready(function() {
 
 			currentCoords = currentLocation.latitude +"|"+ currentLocation.longitude; 
 			currentStreet =  addressComponents.addressLine1;
+
+			$("#SelectedStreetPlaceholder").html(currentStreet);
+			
 		}
 	});
+
+
+
+
+
 
 
 
@@ -417,6 +437,7 @@ function showNotes(){
 		noteDiv.appendChild(noteDateP);
 
 
+		mynote["located"]= mynote["located"].replace("undefined", "");		
 		var noteLocatedP = document.createElement('span');
 		noteLocatedP.innerHTML = mynote["located"].split("&")[1];
 		noteDiv.appendChild(noteLocatedP);
@@ -447,11 +468,14 @@ function showNotes(){
 		}(mynote["id"]);
 
 
-		noteEditButton.onclick = function(id, title, text){
+		var mylat = mynote["located"].split("&")[0].split("|")[0];
+		var mylon = mynote["located"].split("&")[0].split("|")[1];
+
+		noteEditButton.onclick = function(id, title, text, date){
 			return function(){
-				editNote(id, title, text);
+				editNote(id, title, text, date);
 			}
-		}(mynote["id"],mynote["title"],mynote["text"]);
+		}(mynote["id"],mynote["title"],mynote["text"], mynote["date"]);
 
 		noteDiv.appendChild(noteEditButton);
 		noteDiv.appendChild(noteDeleteButton);
@@ -512,15 +536,18 @@ function clearAddForm(){
 
 
 
-function editNote(id, title, text){
-	$("#editForm").css("display", "block");
+function editNote(id, title, text, date){
+	$("#editForm").show();
 	$('#editId').val(id);
 	$('#editTitleBox').val(title);
 	$('#editTextBox').val(text);
+	$('#EditNoteDatePicker').val(date);
+	
+
 }
 
 function hideEditForm(){
-	$("#editForm").css("display", "none");
+	$("#editForm").hide();
 }
 
 

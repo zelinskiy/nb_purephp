@@ -114,7 +114,7 @@ body{
 
 
 #editForm{
-	padding-top:5%;
+	vertical-align: center;
 	padding-left:5000px;
 	padding-right:5000px;
 	padding-bottom:5000px;
@@ -136,8 +136,18 @@ body{
 
 
 #editTextBox{
-	width:50vw;
-	height:20vw;
+	width:400px;
+	height:10vw;
+}
+
+
+
+
+#EditNoteLocationPicker{
+	display:block;
+	width:400px;
+	height:10vw;
+	
 }
 
 
