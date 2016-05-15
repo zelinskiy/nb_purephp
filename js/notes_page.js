@@ -432,7 +432,13 @@ function showNotes(){
 
 		var noteDateP = document.createElement('span');
 		noteDateP.className = "pull-right";
-		mynote["date"]= mynote["date"].replace("null", "");
+
+		if(mynote["date"]){
+			mynote["date"]= mynote["date"].replace("undefined", "");
+		}
+
+
+		
 		noteDateP.innerHTML = mynote["date"];
 		noteDiv.appendChild(noteDateP);
 
