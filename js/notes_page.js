@@ -2,6 +2,9 @@
 
 var NotesArray = []
 
+var currentCoords = "50.01460230824248|36.22808842327879";
+var currentStreet = "проспект Науки 14";
+
 
 
 function addNote(title, text, date){
@@ -11,9 +14,11 @@ function addNote(title, text, date){
 		data:{
 			title:title,
 			text:text,
-			date:date
+			date:date,
+			located:currentCoords +"&"+currentStreet
 		},
 		success:function(note_id) {
+			console.log(currentCoords +"&"+currentStreet);
 			clearAddForm();
 			getUserNotes();
 		},
@@ -226,11 +231,35 @@ $(document).ready(function() {
 		}
 	);
 
+	toggleRowsCols();
+
+
+
+	$("#NoteLocationPickerButton").click(function(){
+		$('#NoteLocationPicker').toggle();
+		}
+	);
+
 
 	$(document).keyup(function(e) {
 	     if (e.keyCode == 27) { 
 	     	hideEditForm();
 	    }
+	});
+
+
+
+
+
+	$('#NoteLocationPicker').locationpicker({
+		location: {latitude: 50.015209, longitude: 36.228303},
+		radius: 300,
+		onchanged: function (currentLocation, radius, isMarkerDropped) {
+			var addressComponents = $(this).locationpicker('map').location.addressComponents;
+
+			currentCoords = currentLocation.latitude +"|"+ currentLocation.longitude; 
+			currentStreet =  addressComponents.addressLine1;
+		}
 	});
 
 
@@ -363,7 +392,7 @@ function showNotes(){
 		var noteTextP = document.createElement('p');
 
 
-		noteTitleP.innerHTML = mynote["title"];
+		noteTitleP.innerHTML = mynote["title"] +"***"+ mynote["located"] ;
 		if(mynote["text"]){
 			noteTextP.innerHTML = replaceHtmlCheckbox(mynote["text"], i);
 		}

@@ -19,6 +19,10 @@
 	<script src="/js/notes_page.js"></script>
 
 
+	<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+	<script src="js/locationpicker.jquery.js"></script>
+
+
 
 
 	<link rel="stylesheet" type="text/css" href="css/notes.css">
@@ -28,6 +32,25 @@
 
 </head>
 <body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -45,7 +68,6 @@
 </div>
 
 
-
 <div id="AddForm" class="panel panel-default ">
 	<div class="panel-heading nounderline">		
 		<div class="dropdown" >			
@@ -60,11 +82,11 @@
 		</div>
 		<button id = "AddCheckboxToAddTextButton" class="btn btn-default glyphicon glyphicon-ok"></button>
 
-		<button type="button" id="NoteLocationPicker" style = "background-color:#C8B5A1;border:none;" class="btn btn-default glyphicon glyphicon-map-marker"></button>
+		<button type="button" id="NoteLocationPickerButton" style = "background-color:#C8B5A1;border:none;" class="btn btn-default glyphicon glyphicon-map-marker"></button>
 
 		<input type="date" id="NoteDatePicker" style = "background-color:#C8B5A1;border:none;"/>
 
-		
+		<div id="NoteLocationPicker" class = "well"></div>
 		<h2>Add note</h2>
 
 	</div>
@@ -78,6 +100,10 @@
 
 	</div>
 </div>
+
+
+
+
 
 
 <div id="NotePatterns" style="display:none;">
