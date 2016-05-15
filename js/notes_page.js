@@ -64,6 +64,7 @@ function updateNote(id, title, text){
 }
 
 
+
 function logOut(){
 	window.location.replace("logout.php");
 }
@@ -119,15 +120,41 @@ function getUserName(){
 	});
 }
 
+function checkUserIdSessionSet(){
+	$.ajax({
+		type: "POST",
+		url: 'Handlers/isLogged.php',
+		data:{		
+		},
+		success:function(h) {
+			console.log(h);
+		},
+		error:function(){
+			alert("UserId not set in session");
+			window.location.replace("login.html");
+
+		}
+	});
+}
+
+
+
+
 //======END OF POST REQUESTS========
 
 
 
-
+$(document).load(
+	function(){
+		checkUserIdSessionSet();
+	}
+);
 
 
 
 $(document).ready(function() {
+
+
 
 	getUserNotes();
 	getUserName();	
@@ -142,12 +169,12 @@ $(document).ready(function() {
 
 
 	$("#AddCheckboxToAddTextButton").click(function(){
-		insertTxtAtCursor("text", "<uch>\n");
+		insertTxtAtCursor("text", "<uch>");
 		}
 	);
 
 	$("#AddCheckboxToEditTextButton").click(function(){
-		insertTxtAtCursor("editTextBox", "<uch>\n");
+		insertTxtAtCursor("editTextBox", "<uch>");
 		}
 	);
 

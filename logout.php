@@ -13,7 +13,7 @@ session_destroy();
 
 ?>
 
-<script>window.location.replace("login.php");</script>
+<script>window.location.replace("login.html");</script>
 
 </body>
 </html>

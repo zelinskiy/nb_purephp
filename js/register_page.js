@@ -31,7 +31,7 @@ function succeed(){
 }
 
 function redirect(){
-	window.location.replace("notes.php");
+	window.location.replace("notes.html");
 }
 
 
@@ -44,7 +44,7 @@ $(document).ready(function() {
 		}
 	);
 	$("#ReturnButton").click(function(){
-		window.location.replace("login.php");
+		window.location.replace("login.html");
 		}
 	);
 });

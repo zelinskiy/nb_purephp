@@ -32,19 +32,50 @@ function succeed(){
 
 
 function redirect(){
-	window.location.replace("notes.php");
+	window.location.replace("notes.html");
 }
 
 
 
 $(document).ready(function() {
+
+
 	$("#LoginButton").click(function(){
 		authorize($('#login').val(), $('#pass').val());
 		}
 	);
 
 	$("#RegisterButton").click(function(){
-		window.location.replace('register.php');
+		window.location.replace('register.html');
 		}
 	);
 });
+
+
+
+function checkUserIdSessionSet(){
+	$.ajax({
+		type: "POST",
+		url: 'Handlers/isLogged.php',
+		data:{		
+		},
+		success:function(h) {
+			console.log(h);
+		},
+		error:function(){
+			alert("UserId not set in session");
+			window.location.replace("login.html");
+
+		}
+	});
+}
+
+
+
+
+
+$(document).load(
+	function(){
+		checkUserIdSessionSet();
+	}
+);
