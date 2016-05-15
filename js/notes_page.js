@@ -3,7 +3,7 @@
 var NotesArray = []
 
 var currentCoords = "50.01460230824248|36.22808842327879";
-var currentStreet = "проспект Науки 14";
+var currentStreet = "";
 
 
 
@@ -240,6 +240,9 @@ $(document).ready(function() {
 		}
 	);
 
+	window.setTimeout(function(){$('#NoteLocationPicker').toggle()}, 500);
+
+
 
 	$(document).keyup(function(e) {
 	     if (e.keyCode == 27) { 
@@ -392,7 +395,7 @@ function showNotes(){
 		var noteTextP = document.createElement('p');
 
 
-		noteTitleP.innerHTML = mynote["title"] +"***"+ mynote["located"] ;
+		noteTitleP.innerHTML = mynote["title"];
 		if(mynote["text"]){
 			noteTextP.innerHTML = replaceHtmlCheckbox(mynote["text"], i);
 		}
@@ -401,11 +404,27 @@ function showNotes(){
 		noteDiv.appendChild(noteTitleP);
 		noteDiv.appendChild(document.createElement("hr"));
 		noteDiv.appendChild(noteTextP);
+		noteDiv.appendChild(document.createElement("br"));
 
+
+		//==========================
+
+
+		var noteDateP = document.createElement('span');
+		noteDateP.className = "pull-right";
+		mynote["date"]= mynote["date"].replace("null", "");
+		noteDateP.innerHTML = mynote["date"];
+		noteDiv.appendChild(noteDateP);
+
+
+		var noteLocatedP = document.createElement('span');
+		noteLocatedP.innerHTML = mynote["located"].split("&")[1];
+		noteDiv.appendChild(noteLocatedP);
 
 
 		
-
+		noteDiv.appendChild(document.createElement("br"));
+		noteDiv.appendChild(document.createElement("br"));
 
 		//===========Butttons==========
 
@@ -460,13 +479,7 @@ function showNotes(){
 
 
 
-		//==========================
-
-
-		var noteDateP = document.createElement('span');
-		mynote["date"]= mynote["date"].replace("null", "");
-		noteDateP.innerHTML = " " + mynote["date"] + " ";
-		noteDiv.appendChild(noteDateP);
+		
 
 		//===========================
 
