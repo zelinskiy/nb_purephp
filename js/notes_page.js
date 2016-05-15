@@ -155,7 +155,6 @@ $(document).load(
 $(document).ready(function() {
 
 
-
 	getUserNotes();
 	getUserName();	
 
@@ -346,7 +345,9 @@ function showNotes(){
 
 		noteDiv.className = "col-sm-3 well";
 		
-		//=========================		
+
+
+		//==============Text===========		
 		var noteTitleP = document.createElement('p');
 		var noteTextP = document.createElement('p');
 
@@ -360,7 +361,9 @@ function showNotes(){
 		noteDiv.appendChild(noteTitleP);
 		noteDiv.appendChild(document.createElement("hr"));
 		noteDiv.appendChild(noteTextP);
-		//=====================
+
+
+		//===========Butttons==========
 
 		var noteDeleteButton = document.createElement('input');
 		var noteEditButton = document.createElement('input');
@@ -372,7 +375,7 @@ function showNotes(){
 		noteEditButton.value = "Edit";
 
 		noteEditButton.className = "btn btn-default";
-		noteDeleteButton.className = "btn btn-default";
+		noteDeleteButton.className = "pull-right btn btn-default";
 
 		noteDeleteButton.onclick = function(id){
 			return function(){
@@ -387,10 +390,34 @@ function showNotes(){
 			}
 		}(mynote["id"],mynote["title"],mynote["text"]);
 
-		noteDiv.appendChild(noteDeleteButton);
 		noteDiv.appendChild(noteEditButton);
+		noteDiv.appendChild(noteDeleteButton);
+		
 
 		//=================
+
+		var noteCopyButton = document.createElement('input');
+
+		noteCopyButton.type = "button";
+
+		noteCopyButton.value = "Fork";
+
+		noteCopyButton.className = "pull-right btn btn-default ";
+
+		noteCopyButton.onclick = function(id){
+			return function(){
+				cloneNote(id);
+			}
+		}(mynote["id"]);
+
+
+
+		noteDiv.appendChild(noteCopyButton);
+
+
+
+
+		//====================
 
 
 		root.appendChild(noteDiv);	
@@ -448,4 +475,19 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+
+
+
+
+
+
+
+
+function cloneNote(id){
+	var note = NotesArray.filter(function(n){
+		return n["id"] == id;
+	})[0];
+	addNote(note["title"], note["text"]);
 }
