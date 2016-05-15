@@ -79,3 +79,34 @@ $(document).load(
 		checkUserIdSessionSet();
 	}
 );
+
+
+
+
+
+function Test(){
+	window.location.replace("/googleapitest.php");
+}
+
+
+
+
+
+
+
+function Test1(){
+	$.ajax({
+		type: "POST",
+		url: 'check.php',
+		data:{		
+		},
+		success:function(h) {
+			console.log(h);
+		},
+		error:function(){
+			alert("fail");
+		}
+	});
+}
+
+
