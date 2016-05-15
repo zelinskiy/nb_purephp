@@ -127,12 +127,9 @@ function checkUserIdSessionSet(){
 		data:{		
 		},
 		success:function(h) {
-			console.log(h);
 		},
-		error:function(){
-			alert("UserId not set in session");
+		error:function(h){
 			window.location.replace("login.html");
-
 		}
 	});
 }
@@ -154,6 +151,7 @@ $(document).load(
 
 $(document).ready(function() {
 
+	checkUserIdSessionSet();
 
 	getUserNotes();
 	getUserName();	
