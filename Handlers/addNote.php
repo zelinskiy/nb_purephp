@@ -11,7 +11,11 @@ $newNote = new Note();
 
 $newNote->Title = $_POST["title"];
 $newNote->Text = $_POST["text"];
+$newNote->Date = $_POST["date"];
+
+
 $newNote->UserId = $_SESSION["userid"];
+
 
 $newNote->Add();
 

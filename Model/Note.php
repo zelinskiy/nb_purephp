@@ -7,6 +7,8 @@ class Note
 	public $Title = "";
 	public $Text = "";
 
+	public $Date="";
+
 	public $UserId = "";
 
 	public $Id = "";
@@ -26,7 +28,8 @@ class Note
 		$data = array(
 			"user_id" => $this->UserId,
 			"title" => $this->Title,
-			"text" => $this->Text
+			"text" => $this->Text,
+			"date" => $this->Date
 			);
 
 		$this->GetNotes()->insert($data);
@@ -41,6 +44,7 @@ class Note
 		$newdata = array(
 			"title" => $this->Title,
 			"text" => $this->Text,
+			"date" => $this->Date
 		);
 
 
@@ -72,7 +76,8 @@ class Note
 			array_push($json, array(
 				"id" => $note["_id"]->{'$id'},
 				"title" => $note["title"],
-				"text" => $note["text"]
+				"text" => $note["text"],
+				"date" => $note["date"]
 				));
 		}
 		return json_encode($json);

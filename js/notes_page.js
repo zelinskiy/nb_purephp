@@ -4,13 +4,14 @@ var NotesArray = []
 
 
 
-function addNote(title, text){
+function addNote(title, text, date){
 	$.ajax({
 		type: "POST",
 		url: 'Handlers/addNote.php',
 		data:{
 			title:title,
-			text:text
+			text:text,
+			date:date
 		},
 		success:function(note_id) {
 			clearAddForm();
@@ -159,7 +160,8 @@ $(document).ready(function() {
 	$("#AddButton").click(function(){
 		addNote(
 			$('#title').val(),
-			$('#text').val()
+			$('#text').val(),
+			$('#NoteDatePicker').val()
 			);
 		}
 	);
@@ -230,6 +232,10 @@ $(document).ready(function() {
 	     	hideEditForm();
 	    }
 	});
+
+
+
+
 
 
 
@@ -368,6 +374,10 @@ function showNotes(){
 		noteDiv.appendChild(noteTextP);
 
 
+
+		
+
+
 		//===========Butttons==========
 
 		var noteDeleteButton = document.createElement('input');
@@ -421,8 +431,15 @@ function showNotes(){
 
 
 
+		//==========================
 
-		//====================
+
+		var noteDateP = document.createElement('span');
+		mynote["date"]= mynote["date"].replace("null", "");
+		noteDateP.innerHTML = " " + mynote["date"] + " ";
+		noteDiv.appendChild(noteDateP);
+
+		//===========================
 
 
 		root.appendChild(noteDiv);	
@@ -497,3 +514,11 @@ function cloneNote(id){
 	})[0];
 	addNote(note["title"], note["text"]);
 }
+
+
+
+
+
+
+
+
