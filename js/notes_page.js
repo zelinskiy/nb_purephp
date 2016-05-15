@@ -220,6 +220,13 @@ $(document).ready(function() {
 		}
 	);
 
+
+	$("#ToggleRowsColsButton").click(function(){
+		toggleRowsCols();
+		}
+	);
+
+
 	$(document).keyup(function(e) {
 	     if (e.keyCode == 27) { 
 	     	hideEditForm();
@@ -479,8 +486,9 @@ function getRandomColor() {
 
 
 
-
-
+function toggleRowsCols(){
+	$("#NotesCollection").toggleClass("col-md-3");
+}
 
 
 
