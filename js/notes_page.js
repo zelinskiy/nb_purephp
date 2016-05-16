@@ -662,6 +662,23 @@ function getNotificationClass(noteDate){
 
 
 
+function getEmail(){
+	$.ajax({
+		type: "POST",
+		url: 'Handlers/getEmail.php',
+		data:{
+		},
+		success:function(h) {
+			alert(h);
+		},
+		error:function(){
+			alert("failed to send confirmation email");
+		}
+	});
+}
+
+
+
 
 
 

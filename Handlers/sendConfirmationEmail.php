@@ -14,6 +14,7 @@ $user = User::GetUserById($_SESSION["userid"]);
 $username = $user["login"];
 $userpass = $user["pass"];
 
+User::AssignEmail($_SESSION["userid"], $_POST["email"]);
 
 
 

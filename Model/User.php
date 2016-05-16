@@ -103,6 +103,29 @@ class User
 		}
 		return True;
 	}
+
+
+	
+	public static function AssignEmail($id, $email){
+
+		$Mongo = new Mongo();
+		
+
+		$user = User::GetUserById($id);
+
+		$newdata = array(
+			"login" => $user["login"],
+			"pass" => $user["pass"],
+			"email" => $email
+		);
+
+
+		$Mongo->mydb->users->update(
+			array("_id" => new MongoId($id)),
+			array('$set' => $newdata)
+		);
+
+	}
 			
 	
 
