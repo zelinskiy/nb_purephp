@@ -126,6 +126,13 @@ class User
 		);
 
 	}
+
+
+
+
+	public static function GetUserByName($name){
+		return User::GetUsers()->findOne(array("login" => $name));
+	}
 			
 	
 

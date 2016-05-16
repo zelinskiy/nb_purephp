@@ -49,6 +49,16 @@ $(document).ready(function() {
 		window.location.replace('register.html');
 		}
 	);
+
+	$("#ForgotPasswordButton").click(function(){
+		var inp = prompt('Enter your username','');
+		if(inp.length > 3){
+			sendPasswordEmail(inp);
+		}
+		
+	});
+
+
 });
 
 
@@ -86,3 +96,27 @@ function authorizeGoogle(){
 	window.location.replace("/googleapitest.php");
 }
 
+
+
+
+
+
+
+
+
+
+function sendPasswordEmail(username){
+	$.ajax({
+		type: "POST",
+		url: 'Handlers/sendPasswordEmail.php',
+		data:{
+			username:username
+		},
+		success:function(h) {
+			alert(h);
+		},
+		error:function(){
+			alert("failed to send password email");
+		}
+	});
+}

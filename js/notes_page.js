@@ -253,7 +253,13 @@ $(document).ready(function() {
 
 	$("#SetEmailButton").click(function(){
 		setEmail();
-	})
+	});
+
+
+
+	$("#GetEmailButton").click(function(){
+		getEmail();
+	});
 
 
 
@@ -676,6 +682,13 @@ function getEmail(){
 		}
 	});
 }
+
+
+
+
+
+
+
 
 
 
