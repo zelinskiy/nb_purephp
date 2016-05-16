@@ -5,7 +5,8 @@ require_once(realpath(__DIR__).'/Model/User.php');
 
 require_once 'vendor/autoload.php';
 
-$redirect_uri = 'http://localhost/googleapitest.php';
+$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+//$redirect_uri = 'http://localhost/googleapitest.php';
 
 $client = new Google_Client();
 

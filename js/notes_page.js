@@ -2,7 +2,7 @@
 
 var NotesArray = []
 
-var currentCoords = "50.01460230824248|36.22808842327879";
+var currentCoords = "";
 var currentStreet = "";
 
 
@@ -442,8 +442,12 @@ function showNotes(){
 		noteDateP.innerHTML = mynote["date"];
 		noteDiv.appendChild(noteDateP);
 
-
-		mynote["located"]= mynote["located"].replace("undefined", "");		
+		if(mynote["located"]){
+			mynote["located"]= mynote["located"].replace("undefined", "");
+		}
+		else{
+			mynote["located"]="";
+		}
 		var noteLocatedP = document.createElement('span');
 		noteLocatedP.innerHTML = mynote["located"].split("&")[1];
 		noteDiv.appendChild(noteLocatedP);
@@ -474,8 +478,7 @@ function showNotes(){
 		}(mynote["id"]);
 
 
-		var mylat = mynote["located"].split("&")[0].split("|")[0];
-		var mylon = mynote["located"].split("&")[0].split("|")[1];
+		
 
 		noteEditButton.onclick = function(id, title, text, date){
 			return function(){
@@ -508,6 +511,30 @@ function showNotes(){
 		noteDiv.appendChild(noteCopyButton);
 
 
+
+		//=================
+
+
+		if(mynote["located"].length > 5){
+			var noteMapLocationButton = document.createElement('a');
+
+			noteMapLocationButton.href = "http://maps.google.com/?q=" + mynote["located"].replace("|",",").split("&")[0];
+
+			noteMapLocationButton.target="_blank"
+
+			noteMapLocationButton.value = "Map";
+
+			noteMapLocationButton.className = "pull-right btn btn-default glyphicon glyphicon-map-marker";
+
+			noteDiv.appendChild(noteMapLocationButton);
+
+		}
+		
+		
+
+
+
+		
 
 		
 
@@ -584,10 +611,30 @@ function toggleRowsCols(){
 
 
 function cloneNote(id){
+	/*
 	var note = NotesArray.filter(function(n){
 		return n["id"] == id;
 	})[0];
+	
 	addNote(note["title"], note["text"]);
+	*/
+
+
+	$.ajax({
+		type: "POST",
+		url: 'Handlers/cloneNoteById.php',
+		data:{
+			id:id
+		},
+		success:function() {
+			getUserNotes();
+		},
+		error:function(){
+			alert("failed to clone note");
+		}
+	});
+
+
 }
 
 

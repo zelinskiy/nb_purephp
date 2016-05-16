@@ -57,6 +57,25 @@ class Note
 	}
 
 
+	public function Fork(){
+
+		$forkingnote = $this->GetNotes()->findOne(array(
+			"_id" => new MongoId($this->Id)
+			));
+
+		$data = array(
+			"user_id" => $forkingnote["user_id"],
+			"title" => $forkingnote["title"],
+			"text" => $forkingnote["text"],
+			"date" => $forkingnote["date"],
+			"located"=>$forkingnote["located"]
+			);
+
+		$this->GetNotes()->insert($data);
+
+	}
+
+
 
 
 	public function Remove(){

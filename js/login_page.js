@@ -60,12 +60,9 @@ function checkUserIdSessionSet(){
 		data:{		
 		},
 		success:function(h) {
-			console.log(h);
+			window.location.replace("notes.html");
 		},
 		error:function(){
-			alert("UserId not set in session");
-			window.location.replace("login.html");
-
 		}
 	});
 }
@@ -74,11 +71,10 @@ function checkUserIdSessionSet(){
 
 
 
-$(document).load(
-	function(){
-		checkUserIdSessionSet();
-	}
-);
+$(document).ready(function() {
+	checkUserIdSessionSet();
+
+});
 
 
 
