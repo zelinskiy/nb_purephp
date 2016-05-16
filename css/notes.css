@@ -184,10 +184,10 @@ body{
 }
 
 #NotesCollection > .well {
-  background-color: #C8B5A1;
-  border-color: black;
+	background-color: #C8B5A1;
+	border-color: black;
 	border-width: 3px;
-  color:black;
+	color:black;
 }
 
 #NotesCollection > .well input {
@@ -233,7 +233,37 @@ body{
 
 
 
+
+
+
 #AddCheckboxToAddTextButton{
 	background-color: transparent;
 	border: none;
+}
+
+
+
+
+#NotesCollection .todayWell{
+	border-color: yellow;
+	border-width: 3px;
+}
+
+
+#NotesCollection .lateWell{
+	border-color: red;
+	border-width: 6px;
+}
+
+
+
+#NotesCollection .tomorrowWell{
+	border-color: orange;
+	border-width: 3px;
+}
+
+
+#NotesCollection .thisweekWell{
+	border-color: green;
+	border-width: 3px;
 }

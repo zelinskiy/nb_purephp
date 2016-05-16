@@ -406,7 +406,9 @@ function showNotes(){
 		var noteDiv = document.createElement('div');
 		noteDiv.id = mynote["id"];
 
-		noteDiv.className = "col-sm-3 well";
+		noteDiv.className = "col-sm-3 well "+getNotificationClass(mynote["date"]);
+
+
 		
 
 
@@ -611,14 +613,6 @@ function toggleRowsCols(){
 
 
 function cloneNote(id){
-	/*
-	var note = NotesArray.filter(function(n){
-		return n["id"] == id;
-	})[0];
-	
-	addNote(note["title"], note["text"]);
-	*/
-
 
 	$.ajax({
 		type: "POST",
@@ -638,6 +632,31 @@ function cloneNote(id){
 }
 
 
+
+
+function getNotificationClass(noteDate){
+	var noteDate = new Date(noteDate);
+	var nowDate = Date.now();
+
+	var diff = noteDate - nowDate; 
+    var days = Math.floor( diff / 86400000)
+
+    if(days == -1){
+    	return "todayWell";
+    }
+    else if(days == 0){
+    	return "tomorrowWell";
+    }
+    else if(days < -1){
+    	return "lateWell";
+    }
+    else if(days > 0 && days < 7){
+    	return "thisweekWell";
+    }
+    else{
+    	return "";
+    }	
+}
 
 
 
