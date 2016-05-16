@@ -55,6 +55,10 @@ class User
 		return User::GetUsers()->findOne(array("_id" => new MongoId($user_id)))["login"];
 	}
 
+	public static function GetUserById($user_id){
+		return User::GetUsers()->findOne(array("_id" => new MongoId($user_id)));
+	}
+
 
 
 

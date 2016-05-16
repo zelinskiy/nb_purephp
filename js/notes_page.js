@@ -251,7 +251,9 @@ $(document).ready(function() {
 
 
 
-	
+	$("#SetEmailButton").click(function(){
+		setEmail();
+	})
 
 
 
@@ -658,6 +660,39 @@ function getNotificationClass(noteDate){
     }	
 }
 
+
+
+
+
+
+
+
+
+
+
+function setEmail(){
+	
+	sendConfirmationEmail(prompt("Email:", ""));
+
+}
+
+
+
+function sendConfirmationEmail(email){
+	$.ajax({
+		type: "POST",
+		url: 'Handlers/sendConfirmationEmail.php',
+		data:{
+			email:email
+		},
+		success:function(h) {
+			alert(h);
+		},
+		error:function(){
+			alert("failed to send confirmation email");
+		}
+	});
+}
 
 
 
