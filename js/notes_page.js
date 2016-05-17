@@ -574,6 +574,10 @@ function imgExist(url)
 function clearAddForm(){
 	$("#text").val("");
 	$("#title").val("");
+	$("#NoteDatePicker").val("");
+	currentStreet="";
+	currentLocation="";
+	$("#SelectedStreetPlaceholder").html("");
 }
 
 
@@ -701,9 +705,11 @@ function getEmail(){
 
 
 function setEmail(){
+	var inp = prompt("Email:", "");
+	if(inp.length > 3){
+		sendConfirmationEmail();
+	}
 	
-	sendConfirmationEmail(prompt("Email:", ""));
-
 }
 
 
