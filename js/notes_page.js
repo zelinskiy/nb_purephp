@@ -359,7 +359,7 @@ function replaceChUch(i, j){
 	
 
 	text = text.replace(oldline, line);
-	updateNote(note["id"], note["title"], text);
+	updateNote(note["id"], note["title"], text, note["date"], note["located"]);
 
 	
 }
